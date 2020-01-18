@@ -6,23 +6,31 @@ import { sendMessages, fetchMessages } from '../actions/index';
 class MessageForm extends Component {
   constructor(props){
       super(props)
-    }
+
+    this.state = {value:""};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleChange(event){
-    console.log(event.target.value)
+    this.setState({value: event.target.value});
   }
 
   handleSubmit(){
-
+    this.props.sendMessages()
   }
 
   render(){
     console.log(this.props)
     return(
-        <form onSubmit = {this.handleSubmit}>
-            <input onChange = {this.handleChange} type="text"/>
-            <button  >Enter Message!</button>
 
-          </form>
+        <div className = "messagingarea">
+            <form onSubmit = {this.handleSubmit}>
+                <input onChange = {this.handleChange} type="text"/>
+                <button  >Enter Message!</button>
+
+            </form>
+        </div>
     )
   }
 }

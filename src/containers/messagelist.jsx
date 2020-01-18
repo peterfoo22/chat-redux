@@ -15,7 +15,7 @@ class MessageList extends Component  {
 
   render(){
     return(
-      <div>
+      <div className = "chatarea">
         {this.props.info.messages.map((message, index)=>
            <Message key = {index} username = {message.author} message = {message.content} createdat = {message.created_at}
           />

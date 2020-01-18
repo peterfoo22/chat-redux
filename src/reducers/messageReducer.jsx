@@ -16,7 +16,6 @@ const intialstate = {
 };
 
 export default function (state = intialstate, action) {
-  console.log(action.payload)
   switch (action.type) {
     case 'FETCH': {
       return state;
