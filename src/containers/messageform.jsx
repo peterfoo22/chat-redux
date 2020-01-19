@@ -17,11 +17,10 @@ class MessageForm extends Component {
   }
 
   handleSubmit(){
-    this.props.sendMessages()
+    this.props.sendMessages(this.props.thisChannel, this.props.author, this.state.value)
   }
 
   render(){
-    console.log(this.props)
     return(
 
         <div className = "messagingarea">
@@ -35,10 +34,17 @@ class MessageForm extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    thisChannel: state.messages.selectedChannel,
+    author: state.messages.currentUser
+  };
+}
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators( {sendMessages}, dispatch);
 }
 
 
-export default connect(null, mapDispatchToProps)(MessageForm);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
